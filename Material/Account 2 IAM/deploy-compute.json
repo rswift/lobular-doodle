@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowWhatIsRequired",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "DenyIfNotTerraformSession",
+            "Effect": "Deny",
+            "Action": [
+                "lambda:*",
+                "ec2:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringNotEquals": {
+                    "sts:RoleSessionName": "terraform_session"
+                }
+            }
+        }
+    ]
+}
+

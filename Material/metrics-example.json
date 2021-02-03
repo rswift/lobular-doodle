@@ -1,0 +1,61 @@
+{
+    "Endpoint": "httpbin.org",
+    "Operation": "/uuid",
+    "CorrelationId": "694257a2-839b-406c-aa4d-936bf29abc23",
+    "Success": 1,
+    "Failure": 0,
+    "Error": 0,
+    "Invocations": 1,
+    "ConnectionLatency": 456,
+    "RequestLatency": 123,
+    "ResponseLatency": 234,
+    "Status": "200",
+
+    "_aws": {
+        "Timestamp": 1612528496789,
+        "CloudWatchMetrics": [
+            {
+                "Dimensions": [
+                    [
+                        "API"
+                    ],
+                    [
+                        "API",
+                        "Operation"
+                    ]
+                ],
+                "Metrics": [
+                    {
+                        "Name": "Success",
+                        "Unit": "Count"
+                    },
+                    {
+                        "Name": "Failure",
+                        "Unit": "Count"
+                    },
+                    {
+                        "Name": "Error",
+                        "Unit": "Count"
+                    },
+                    {
+                        "Name": "Invocations",
+                        "Unit": "Count"
+                    },
+                    {
+                        "Name": "ConnectionLatency",
+                        "Unit": "Milliseconds"
+                    },
+                    {
+                        "Name": "RequestLatency",
+                        "Unit": "Milliseconds"
+                    },
+                    {
+                        "Name": "ResponseLatency",
+                        "Unit": "Milliseconds"
+                    }
+                ],
+                "Namespace": "Example/Namespace"
+            }
+        ]
+    }
+}

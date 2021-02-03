@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowWhatIsRequired",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutResourcePolicy",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:PutRetentionPolicy",
+                "logs:CreateLogGroup",
+                "logs:DescribeResourcePolicies",
+                "logs:DeleteLogGroup",
+                "logs:ListTagsLogGroup"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "DenyIfNotTerraformSession",
+            "Effect": "Deny",
+            "Action": "logs:*",
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringNotEquals": {
+                    "sts:RoleSessionName": "terraform_session"
+                }
+            }
+        }
+    ]
+}
