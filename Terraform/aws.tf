@@ -35,6 +35,12 @@ provider "aws" {
   profile = var.aws_profile
   region  = "eu-west-2"
 
+  #
+  # if you only have one account, then assuming a role is not required
+  # as the rest of this configuration deploys via an IAM user... it
+  # could use assume role, but that's a more complex configuration than
+  # is necessary...
+  #
   assume_role {
     role_arn     = "arn:aws:iam::${var.target_account}:role/deploy"
     session_name = "terraform_session"
