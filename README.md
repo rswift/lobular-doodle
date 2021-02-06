@@ -153,6 +153,20 @@ The policies needed by Terraform to achieve this are included in the [Material/A
 
 I created a separate `console` account for access to the AWS account via a browser.
 
+### But I only have one AWS account!
+No problem simply comment out the `assume_role {}` section in [`aws.tf`](./Terraform/aws.tf#L44 "aws.tf"). Note though that regardless of how many accounts, terraform needs the permission to invoke the required APIs, as per the policies described [here](./Material/Account%202%20IAM/deploy-iam.json "IAM"), [here](./Material/Account%202%20IAM/deploy-monitoring.json "monitoring") & [here](./Material/Account%202%20IAM/deploy-compute.json "compute").
+
+### Troubleshooting
+If you have problems excuting the terraform, [terraform logging](https://www.terraform.io/docs/internals/debugging.html "terraform debugging") can be enabled:
+```bash
+echo "the log level can be one of TRACE, DEBUG, INFO, WARN or ERROR" > /dev/null
+export TF_LOG=INFO
+```
+note that `DEBUG` will give quote a lot of output that isn't always additionally helpful over and above `INFO`. To turn off logging, simply:
+```bash
+unset TF_LOG
+```
+
 ## Destroy!
 The resources can be removed as easily as they were added, simply:
 ```bash
